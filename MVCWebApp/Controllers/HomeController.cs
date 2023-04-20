@@ -15,6 +15,15 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        Student student = new Student();
+        student.Id = 121;
+        student.Name = "Preethi";
+        student.City = "New York";
+        return View(student);
+    }
+
+    public IActionResult About()
+    {
         return View();
     }
 
