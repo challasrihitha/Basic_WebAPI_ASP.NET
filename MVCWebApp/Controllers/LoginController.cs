@@ -29,6 +29,24 @@ namespace MVCWebApp.Controllers
 
             return users;
         }
+
+        [HttpPost]
+        public IActionResult Verify(UserModel usr)
+        {
+            var u = PutValue();
+            var ue = u.Where( u => u.username.Equals(usr.username));
+            var up = ue.Where(p => p.password.Equals(usr.password));
+            if(up.Count()==1)
+            {
+                ViewBag.message = "Login Success";
+                return View("LoginSucess");
+            }
+            else
+            {
+                ViewBag.message = "Login Failed";
+                return View("Login");
+            }
+        }
     }
 }
 
