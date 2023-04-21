@@ -39,7 +39,7 @@ namespace MVCWebApp.Controllers
             if(up.Count()==1)
             {
                 ViewBag.message = "Login Success";
-                return View("LoginSucess");
+                return View("LoginSuccess");
             }
             else
             {
