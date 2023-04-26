@@ -1,4 +1,4 @@
-﻿@model MVCWebApp.Models.UserModel;
+﻿@model MVCWebApp.Models.User;
 
 @{
     Layout = null;
@@ -15,7 +15,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: lightblue;
+            background-color: #659DBD;
             height: 100vh;
         }
 
@@ -24,8 +24,9 @@
             max-width: 400px;
             height: 350px;
             border: 1px solid #9C9C9C;
-            background-color: #EAEAEA;
+            background-color: #FBEEC1;
         }
+  
 
             #login .container #login-row #login-column #login-box #login-form {
                 padding: 20px;
@@ -52,12 +53,19 @@
                             <div class="form-group">
                                 <label for="password" class="text-info">Password:</label><br>
                                 @Html.PasswordFor(m => m.password, new { @class = "form-control", @placeholder = "Password", @required = true })
+
                             </div>
                             <div class="form-group">
                                 <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+
                             </div>
                         }
+                        @using (Html.BeginForm("check", "Registration", FormMethod.Post))
+                            {
+                   
+                            <input type="submit" name="submit" class=" btn btn-info btn-md" value="Register">
+                            }
                         <div style="color:red;">@ViewBag.message</div>
                     </div>
                 </div>

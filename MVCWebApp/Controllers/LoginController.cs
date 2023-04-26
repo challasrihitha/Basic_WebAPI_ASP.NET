@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MVCWebApp.Models;
 
@@ -12,33 +13,33 @@ namespace MVCWebApp.Controllers
     public class LoginController : Controller
     {
         // GET: /<controller>/
-        public IActionResult Login()
+        public ActionResult Login()
         {
             return View();
         }
 
-        public List<UserModel> PutValue()
+        public List<User> PutValue()
         {
-            var users = new List<UserModel>
+            var users = new List<User>
             {
-                new UserModel{id=1,username="srihitha",password = "100"},
-                new UserModel{id=2,username="neha",password = "101"},
-                new UserModel{id=3,username="priya",password = "102"},
-                new UserModel{id=4,username="preethi",password = "103"}
+                new User{UserId=1,username="srihitha",password = "100"},
+                new User{UserId=2,username="neha",password = "101"},
+                new User{UserId=3,username="priya",password = "102"},
+                new User{UserId=4,username="preethi",password = "103"}
             };
 
             return users;
         }
 
         [HttpPost]
-        public IActionResult Verify(UserModel usr)
+        public ActionResult Verify(User usr)
         {
             var u = PutValue();
             var ue = u.Where( u => u.username.Equals(usr.username));
             var up = ue.Where(p => p.password.Equals(usr.password));
             if(up.Count()==1)
             {
-                ViewBag.message = "Login Success";
+                ViewBag.message = "Login  is Success";
                 return View("LoginSuccess");
             }
             else
@@ -46,7 +47,10 @@ namespace MVCWebApp.Controllers
                 ViewBag.message = "Login Failed";
                 return View("Login");
             }
+
         }
+       
+
     }
 }
 

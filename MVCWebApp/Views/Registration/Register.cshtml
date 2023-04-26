@@ -1,0 +1,111 @@
+﻿@model MVCWebApp.Models.User;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registration</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #659DBD;
+            margin-top: 120px;
+            margin-left: 550px;
+        }
+
+        table {
+            border: 1px solid red;
+            border-collapse: collapse;
+            height:300px;
+            max-width:500px;
+        }
+
+            table th {
+                background-color: orange;
+                color: #333;
+                font-weight: bold;
+            }
+
+            table th, table td {
+                padding: 5px;
+                border: 1px solid #ccc;
+                background-color: #FBEEC1;
+            }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <th colspan="3">
+                    Registration
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    Username
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.username, new {@required = true,MaxLength = 12})
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.username, "", new { @class = "error"  })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password
+                </td>
+                <td>
+                    @Html.PasswordFor(m => m.password, new { @required = true })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.password, "", new { @class = "error"})
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Confirm Password
+                </td>
+                <td>
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @required = true })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "error"  })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Email , new { @required = true})
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "error"  })
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Submit" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    }
+    
+ 
+</body>
+</html>
