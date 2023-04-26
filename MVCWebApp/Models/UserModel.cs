@@ -1,12 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace MVCWebApp.Models
 {
-    public class UserModel
+    public class User
     {
-        public int id { get; set; }
+        public int UserId { get; set; }
+
+        [Required(ErrorMessage = "Required.")]
+       
         public string? username { get; set; }
+
+        [Required(ErrorMessage = "Required.")]
         public string? password { get; set; }
+
+        [Required(ErrorMessage = "Required.")]
+        [Compare("password",ErrorMessage = "passwords not match")]
+        public string? ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "Required.")]
+        [EmailAddress( ErrorMessage = "Invalid email address")]
+        public string? Email { get; set; }
     }
 }
 

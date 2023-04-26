@@ -51,6 +51,13 @@ namespace MVCWebApp
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Login}/{action=Login}/{id?}");
+
+            });
+            app.UseEndpoints(Endpoints =>
+            {
+                Endpoints.MapControllerRoute(
+                    name:"Registration",
+                    pattern: "{controller=Registration}/{action=Register}/{id?}");
             });
         }
     }
